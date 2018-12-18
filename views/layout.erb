@@ -1,0 +1,25 @@
+<!Doctype html>
+<html>
+  <head>
+    <title>Sinatra</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+
+    <%= erb :"partials/header" %>
+
+    <%= erb :"partials/nav" %>
+
+    <main>
+
+    <%= yield %>
+
+    </main>
+
+    <%= erb :"partials/footer" %>
+
+
+    <script src="main.js"></script>
+  </body>
+</html>

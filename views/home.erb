@@ -1,11 +1,41 @@
 
 <h1> Welcome to Site name!</h1>
-<h1 class="center"> Join The Fellowship!</h1>
 
-<div class="center">
-<form class="ui form" method="POST" action="/users/signup">
-  <h2>SIGN UP</h2>
-  <div class="two fields">
+<form class="ui form" method="POST" action="/loggedin">
+  <h2>Login</h2>
+  <div >
+      <div class="field">
+      <label>Username</label>
+      <input required type="text" name="username">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input required type="text" name="email">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input required type="password" name="password">
+    </div>
+  </div>
+
+  <button class="ui button" type="submit">Submit</button>
+</form>
+</div>
+
+<h2 class="centerOr"> Or </h2> 
+
+
+<h2 class="rightSignUp"> Sign Up </h2>
+<div class="right">
+
+<form class="ui form" method="POST" action="/loggedin">
+  
+  <div >
+      <div class="field">
+      <label>Username</label>
+      <input required type="text" name="username">
+    </div>
     <div class="field">
       <label>Email</label>
       <input required type="text" name="email">

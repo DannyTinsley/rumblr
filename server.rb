@@ -4,12 +4,12 @@ require "sinatra/reloader"
 register Sinatra::Reloader
 
 get '/' do
- if session[:user_id]
-    @user = User.find(session[:user_id])
-     erb :loggedin, :layout =>  :layout
-    else
-    erb :not_allowed
-    end
+   if session[:user_id]
+      @user = User.find(session[:user_id])
+       erb :loggedin, :layout =>  :layout
+      else
+      erb :home
+      end
 end
 
 get '/about' do
@@ -75,6 +75,8 @@ get '/signup' do
        end
    end
 
+   
+
 get '/loggedin' do
     if session[:user_id]
        @user = User.find(session[:user_id])
@@ -93,6 +95,11 @@ get '/loggedin' do
        erb :not_allowed
        end
    end
+
+# remember to add all the links <do method> for the books/movies in the dropdown menu on the navbar
+#######
+
+
 # get '/about' do
 #   erb :about, :layout =>  :layout
 # end

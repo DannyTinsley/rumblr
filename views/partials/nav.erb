@@ -1,11 +1,55 @@
 <nav>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/books">The Books</a></li>
-    <li><a href="/post">Make A Post</a></li>
-    <li><a href="/signout">Signout</a></li>
-    <li><a href="/signup">Sign Up!</a></li>
-    <li><a href="/store">Store</a></li>
-  </ul>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/about">About<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          The Books
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/fellowship_book">The Fellowship Of The Ring</a>
+          <a class="dropdown-item" href="/two_towers_book">The Two Towers</a>
+          <a class="dropdown-item" href="/return_book">The Return Of The King</a>
+          <a class="dropdown-item" href="/hobbit_book">The Hobbit</a>
+          <a class="dropdown-item" href="/sil_book">The Silmarillion</a>
+          <a class="dropdown-item" href="/hurin_book">The Children of Hurin</a>
+          <a class="dropdown-item" href="/beren_book">Beren and Luthien</a>
+          <a class="dropdown-item" href="/fall_book">The Fall of Gondolin</a>
+          
+        </div>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/movies" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          The Movies
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/fellow_movie">The Fellowship Of The Ring</a>
+        <a class="dropdown-item" href="/towers_movie">The Two Towers</a>
+        <a class="dropdown-item" href="/return_movie">The Return Of The King</a>
+        <a class="dropdown-item" href="/hobbit_movie">The Hobbit</a>
+        </div>
+      </li>
+      <a class="nav-link" href="/post">Make a Post<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/signout">Signout<span class="sr-only">(current)</span></a>
+      </li>
+      <a class="nav-link" href="/signup">Sign Up!<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/store">Store<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 </nav>

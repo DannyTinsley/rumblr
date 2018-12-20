@@ -1,9 +1,16 @@
 
 
 body {
-
+    padding: 50px;
+    border: 100px solid rgb(5, 48, 5);
+    height: 100%;
 }
 
+.siteName{
+    z-index: 15;
+    font-size: 32px;
+    color:white;
+}
 .center{
     text-align: center;
     transform: translate(-50,-50);
@@ -30,8 +37,18 @@ body {
     text-align: center;
     right: 30%;
     transform: translate(-50,-50);
-    top: 70%;
+    top: 80%;
     position: absolute;
+}
+
+.rightSignUpButton {
+    text-align: center;
+    right: 70%;
+    transform: translate(-50,-50);
+    top: 85%;
+    position: absolute;
+    font-size: 32px;
+    
 }
 
 .left{
@@ -47,13 +64,22 @@ body {
     width: 100%;
 }
 
-
+.bigButton{
+    font-size: 72px;
+    padding: 10px;
+    color: #CEB992;
+    background-color: #A77E58;
+    border: 5px solid #CEB992;
+    right: 7%;
+    position: absolute;
+}
 
 .notAllowed {
     width: 90%;
     top: 5%;
     left: 5%;
     position: absolute;
+   
     
 }
 

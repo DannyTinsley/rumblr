@@ -1,23 +1,44 @@
 require 'sinatra'
 require "sinatra/reloader"
+require "./models/user.rb"
+require "./models/post.rb"
+require "active_record"
+
+
+
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'db/lotr.db'
+)
+
 
 register Sinatra::Reloader
+enable :sessions
 
 get '/' do
-   if session[:user_id]
-      @user = User.find(session[:user_id])
-       erb :loggedin, :layout =>  :layout
-      else
-      erb :home
-      end
+   erb :home, :layout =>  :layout
 end
 
+get '/home' do
+   if session[:user_id] != nil
+      # @user = User.find(session[:user_id])
+       redirect '/loggedin'
+   else session[:user_id] = nil
+      redirect '/'
+      end
+   end
+
+
+
 get '/about' do
-    if session[:user_id]
-       @user = User.find(session[:user_id])
-        erb :about, :layout =>  :layout
-       else
-       erb :not_allowed
+    if session[:user_id] != nil
+
+      # erb :about, :layout =>  :layout
+      #  else
+      #  erb :not_allowed
+    else 
+      session[:user_id] = nil
+      redirect '/not_allowed'
        end
    end
 
@@ -48,14 +69,6 @@ get '/post' do
        end
    end
 
-get '/signout' do
-    if session[:user_id]
-       @user = User.find(session[:user_id])
-        erb :signout, :layout =>  :layout
-       else
-       erb :not_allowed
-       end
-   end
 
 get '/store' do
     if session[:user_id]
@@ -66,20 +79,20 @@ get '/store' do
        end
    end
 
-get '/signup' do
-    if session[:user_id]
-       @user = User.find(session[:user_id])
-        erb :loggedin, :layout =>  :layout
-       else
-       erb :signup
-       end
-   end
+# get '/signup' do
+#     if session[:user_id]
+#        @user = User.find(session[:user_id])
+#         erb :loggedin, :layout =>  :layout
+#        else
+#        erb :signup
+#        end
+#    end
 
    
 
 get '/loggedin' do
-        erb :loggedin, :layout =>  :layout
-       
+   erb :loggedin, :layout =>  :layout
+      
    end
 
 
@@ -93,14 +106,17 @@ get '/loggedin' do
    end
 
    get '/signout' do
-      session[:user_id] = nil
-      redirect '/'
+      if session[:user_id] != nil
+     session[:user_id]= nil
+      else session[:user_id] =nil
+     redirect '/'
+      end
     end
 
 
 
-    post '/users/login' do
-      user = User.find_by(email: params["email"], password: params["password"])
+    get '/login' do
+      doesUserExist = User.find_by(username: params["username"], email: params["email"], password: params["password"])
       puts ">>>>>>>>>>>>"
       puts user.inspect
       puts ">>>>>>>>>>>>"
@@ -108,22 +124,22 @@ get '/loggedin' do
         session[:user_id] = user.id
         redirect '/loggedin'
       else
-        redirect '/login'
+        redirect '/signup'
       end
     end
     
-
+    get '/make_post' do
+      erb :make_post, :layout => :layout
+     end
     
-   #  post '/signup' do
-   #    temp_user = User.find_by(email: params["email"])
-   #    if temp_user
-   #      redirect '/loggedin'
-   #    else
-   #      user = User.create(userame: params["username"], email: params["email"], password: params["password"])
-   #      session[:user_id] = user.id
-   #      redirect '/'
-   #    end
-   #  end
+    get '/signup' do
+     erb :signup, :layout => :layout
+    end
+   
+    post '/signup' do
+     User.create(username: params[:username], email: params[:email], password: params[:password])
+      redirect '/loggedin'
+    end
 
     post '/loggedin' do
       erb :loggedin, :layout =>  :layout

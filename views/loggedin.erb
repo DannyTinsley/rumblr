@@ -1,4 +1,5 @@
 
+
 <br>
 
 <!-- Button trigger modal -->
@@ -11,7 +12,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Make A Post</h5>
+        <h1 class="modal-title" id="exampleModalLongTitle">Make A Post</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -24,12 +25,13 @@
               <div >
                   <div class="field">
                   <label>Your User ID</label>
-                  <input required type="text" name="user_id">
+                  <input required type="integer" name="user_id" placeholder="Please type:" + ""<%=session[:user_id]%>"" >
+                  
                 </div>
                 <br>
                 <div class="field">
-                  <label>Title</label>
-                  <input required type="text" name="title">
+                   <label>Post Title</label>
+                    <input required type="text" class="form-control"  rows="1">
                 </div>
                 <br>
                 <div class="field">
@@ -40,10 +42,8 @@
               <br>
               <div class="form-group">
     <label for="exampleFormControlTextarea1">Write Your Post!</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+    <textarea input required type="text" class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
   </div>
-                  <br>
-                  <br>
                   <br>
                   <br>
                   <br>
@@ -54,7 +54,7 @@
               <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               
-              <button type="button" id="postCreate" class="btn btn-primary">Save Changes</button>
+              <button type="button" id="postCreate" method="POST" action="/loggedin" class="btn btn-primary">Save Changes</button>
 
             </form>
             </div>

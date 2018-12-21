@@ -1,8 +1,8 @@
 
 
 body {
-    padding: 50px;
-    border: 100px solid rgb(5, 48, 5);
+    padding: 30px;
+    border: 70px solid rgb(5, 48, 5);
     height: 100%;
 }
 
@@ -75,9 +75,9 @@ body {
 }
 
 .notAllowed {
-    width: 90%;
-    top: 5%;
-    left: 5%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
     position: absolute;
    
     

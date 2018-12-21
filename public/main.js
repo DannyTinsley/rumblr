@@ -12,11 +12,11 @@ function savePost (){
     // let post_title= <%=@title %>
     // let 
 
-    // Post.create(user_id: params[:user_id], title:  params[:title], date: params[:date], body: params[:body])
+        
         // sanity check
-        document.write("Please show");
+        // document.write("Please show");
 
 
-    //falsh.now[:alert] = 'something' <a href= "/">Text</a> '
+    // flash.now[:alert] = 'something' <a href= "/">Text</a> '
     
 }

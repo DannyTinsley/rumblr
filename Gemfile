@@ -12,6 +12,6 @@ gem 'rack'
 gem 'logger'
 gem 'pry'
 
-group :production fo
+group :production do
 gem 'pg'
 end

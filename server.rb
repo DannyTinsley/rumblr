@@ -19,6 +19,7 @@ register Sinatra::Reloader
 # enable :sessions
 
 use Rack::Session::Cookie, :key => "rack.session"
+set :session_secret, 'secret'
 
 
 

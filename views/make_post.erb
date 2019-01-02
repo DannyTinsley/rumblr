@@ -1,4 +1,37 @@
 
 
- Post.create!(user_id: params[:user_id], title:  params[:title], date: params[:date], body: params[:body])
- Post.save
+<h1>Make A Post</h1>
+
+      <form class="ui form" method="POST" action="/make_post">
+     
+      <h2>Keep It Short!</h2>
+      <br>
+    
+        <br>
+        <div class="field">
+           <label>Post Title</label>
+            <input required type="text" class="form-control" name="title" rows="1">
+        </div>
+        <br>
+        <div class="field">
+          <label>Date</label>
+          <input required type="text" name="date">
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+<label for="exampleFormControlTextarea1">Write Your Post!</label>
+<textarea input required type="text" class="form-control" name="body" id="exampleFormControlTextarea1" rows="8"></textarea>
+</div>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+
+      <input type="submit" id="postCreate"  class="btn btn-primary" value="Save Changes" >
+
+    </form>

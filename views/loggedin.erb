@@ -2,67 +2,7 @@
 
 <br>
 
-<!-- Button trigger modal -->
-<button type="button" class="ui button bigButton" data-toggle="modal" data-target="#exampleModalLong">
-  Make A Post
-</button>
-</form>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="exampleModalLongTitle">Make A Post</h1>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="center">
-              <form class="ui form" method="POST" action="/make_post">
-             
-              <h2>Keep It Short!</h2>
-              <br>
-              <div >
-                  <div class="field">
-                  <label>Your User ID</label>
-                  <input required type="integer" name="user_id" placeholder="Please type:" + ""<%=session[:user_id]%>"" >
-                  
-                </div>
-                <br>
-                <div class="field">
-                   <label>Post Title</label>
-                    <input required type="text" class="form-control"  rows="1">
-                </div>
-                <br>
-                <div class="field">
-                  <label>Date</label>
-                  <input required type="text" name="date">
-                </div>
-              </div>
-              <br>
-              <div class="form-group">
-    <label for="exampleFormControlTextarea1">Write Your Post!</label>
-    <textarea input required type="text" class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
-  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                </div>
-              </div>
-              </div>
-              <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              
-              <button type="button" id="postCreate" method="POST" action="/loggedin" class="btn btn-primary">Save Changes</button>
 
-            </form>
-            </div>
-    
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <div class= "container">

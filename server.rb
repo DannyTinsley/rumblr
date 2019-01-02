@@ -4,16 +4,22 @@ require "./models/user.rb"
 require "./models/post.rb"
 require "active_record"
 
-
-
+if ENV['DATABASE_URL']
+   ActiveRecord::Base.establish_connection(
+     ENV['DATABASE_URL']
+    )
+else
 ActiveRecord::Base.establish_connection(
   adapter: 'sqlite3',
   database: 'db/lotr.db'
 )
-
+end
 
 register Sinatra::Reloader
-enable :sessions
+# enable :sessions
+
+use Rack::Session::Cookie, :key => "rack.session"
+
 
 
 def logged_in?
@@ -76,14 +82,16 @@ get '/home' do
 #    end
 
 get '/about' do
+ 
    if 
-      session[:user_id] = !logged_in? 
-       erb '/about'
-   else
-      session[:user_id] != !logged_in?
-       redirect '/not_allowed'
-   end
- end
+      session[:user_id] == user_id
+      erb :about, :layout => :layout
+    else
+     
+      erb :not_allowed
+    end
+  end
+ 
 
 
 
@@ -103,35 +111,32 @@ get '/loggedin' do
       
    end
 
-   post '/loggedin' do
-      if 
-      session[:user_id] == !logged_in? 
-      # Post.create!(user_id: params[:user_id], title:  params[:title], date: params[:date], body: params[:body])
-      Post.create(
-      user_id: params["user_id"],
-      title: params["title"],
-      date: params["date"],
-      body: params["body"]
-   )
-      else 
-         redirect '/loggedin'
-      end
-   end
+   # post '/loggedin' do
+   #    if 
+   #    session[:user_id] == !logged_in? 
+   #    # Post.create!(user_id: params[:user_id], title:  params[:title], date: params[:date], body: params[:body])
+   #    Post.create(
+   #    user_id: params["user_id"],
+   #    title: params["title"],
+   #    date: params["date"],
+   #    body: params["body"]
+   # )
+   #    else 
+   #       redirect '/loggedin'
+   #    end
+   # end
 
  get '/not_allowed' do
-    if session[:user_id]
-       @user = User.find(session[:user_id])
-        erb :loggedin, :layout =>  :layout
-       else
-       erb :not_allowed
-       end
+    
+        erb :not_allowed, :layout =>  :layout
+      
    end
 
    get '/signout' do
-      session[:user_id] == nil
-      session[:user_id] != !logged_in?
-     redirect '/'
-     
+         session.clear
+         session[:user_id] = nil
+         redirect '/signup'
+
     end
 
 
@@ -155,7 +160,13 @@ get '/loggedin' do
     end
     
     get '/make_post' do
-      erb :make_post, :layout => :layout
+      if 
+         session[:user_id] = !logged_in? 
+          erb :make_post, :layout => :layout
+      else
+         session[:user_id] != !logged_in?
+          redirect '/not_allowed'
+      end
      end
     
     get '/signup' do
@@ -215,16 +226,31 @@ get '/books' do
       end
    end
 
-get '/post' do
+get '/make_post' do
+
       if 
          session[:user_id] = !logged_in? 
-         erb '/post'
+         erb :make_post, :layout=> :layout
       else
          session[:user_id] != !logged_in?
          redirect '/not_allowed'
       end
    end
 
+   post '/make_post' do
+      # Post.create!(user_id: params[:user_id], title:  params[:title], date: params[:date], body: params[:body])
+      # Post.save
+
+
+      Post.create(
+      user_id: session[:user_id],
+      title: params["title"],
+      date: params["date"],
+      body: params["body"]
+   )
+     
+      redirect '/loggedin'
+   end
 
 get '/store' do
       if 
